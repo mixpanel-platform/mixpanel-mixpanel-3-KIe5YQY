@@ -1198,6 +1198,27 @@
           from_date: startDate.format('YYYY-MM-DD'),
           to_date: endDate.format('YYYY-MM-DD')
         }
+                // track events 
+        getWithCredentials('https://mixpanel.com/admin/internal/api/project_credentials', {project_id: 29988}).done(function(creds) {
+          var data = _.extend({}, globalParams, {
+            event: "track_events",
+            on: "number(properties[\"count\"])"
+          })
+          
+          $.get("https://mixpanel.com/api/2.0/segmentation/sum", signData(data, creds.apiKey, creds.apiSecret)).done(function(results_pre_sampling) {
+             var data = _.extend({}, globalParams, {
+               event: "track_events",
+               on: "number(properties[\"post_sampling\"])"
+             })
+             $.get("https://mixpanel.com/api/2.0/segmentation/sum", signData(data, creds.apiKey, creds.apiSecret)).done(function(results_post_sampling) {
+               $('.chart.nigh-time-pages .body').MPChart('setData', {
+                 "track events pre sampling": results_pre_sampling.results,
+                 "track events post sampling": results_post_sampling.results
+               });
+             })
+            
+          })
+        });
       }
     }
     
