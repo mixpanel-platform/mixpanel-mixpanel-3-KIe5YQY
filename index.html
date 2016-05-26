@@ -1376,8 +1376,10 @@
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
             
             rootScope.$apply(function () {
-                rootScope.nightTimeDataJson = chart_data;
+                rootScope.nightTimeDataJson = {"a": "b"};
             });
+            
+            console.log(rootScope.nightTimeDataJson);
             
             //$('#nightTimeData').text(JSON.stringify(chart_data))
             //angular.injector().$root.nightTimeDataJson = chart_data;
