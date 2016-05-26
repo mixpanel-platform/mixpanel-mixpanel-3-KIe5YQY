@@ -667,7 +667,7 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="$root.nightTimeDataJson"></json-formatter>
+                <json-formatter open="0" json="$rootScope.nightTimeDataJson"></json-formatter>
                 <!--<textarea ng-model="nightTimeData" class="col-xs-6" id="nightTimeData"></textarea>-->
          </div>
      </div>
@@ -871,7 +871,7 @@
         });
     });
         
-    var rootScope = angular.injector(['ng', 'MPTopLine']).get('$rootScope');
+    var $rootScope = angular.injector(['ng', 'MPTopLine']).get('$rootScope');
     
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
@@ -1375,11 +1375,11 @@
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
             
-            rootScope.$apply(function () {
-                rootScope.nightTimeDataJson = {"a": "b"};
+            $rootScope.$apply(function () {
+                $rootScope.nightTimeDataJson = {"a": "b"};
             });
             
-            console.log(rootScope.nightTimeDataJson);
+            console.log($rootScope.nightTimeDataJson);
             
             //$('#nightTimeData').text(JSON.stringify(chart_data))
             //angular.injector().$root.nightTimeDataJson = chart_data;
