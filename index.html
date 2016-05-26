@@ -667,8 +667,8 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="nightTimeDataJson"></json-formatter>
-                <textarea ng-model="nightTimeData" class="col-xs-6" id="nightTimeData"></textarea>
+                <json-formatter open="0" json="$root.nightTimeDataJson"></json-formatter>
+                <!--<textarea ng-model="nightTimeData" class="col-xs-6" id="nightTimeData"></textarea>-->
          </div>
      </div>
      
@@ -847,8 +847,6 @@
     </script>
    
     <script>
-    var injector = angular.injector(['ng']);
-    var rootScope = injector.get("$rootScope");
     
     var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
 
@@ -864,6 +862,8 @@
             } catch (e) {}
         });
     });
+    
+    var rootScope = angular.element($'.ng-scope').injector().get('$rootScope');
     
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
@@ -1366,7 +1366,12 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            $('#nightTimeData').text(JSON.stringify(chart_data))
+            
+            rootScope.$apply(function () {
+                rootScope.nightTimeDataJson = chart_data;
+            });
+            
+            //$('#nightTimeData').text(JSON.stringify(chart_data))
             //angular.injector().$root.nightTimeDataJson = chart_data;
           })
         });
