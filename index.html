@@ -1568,7 +1568,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            $('nightTimeEscalationsElement').jsonView(JSON.stringify(chart_data));
+            $('#nightTimeEscalationsElement').jsonView(JSON.stringify(chart_data));
           })
         });
         // End Night time escalations
