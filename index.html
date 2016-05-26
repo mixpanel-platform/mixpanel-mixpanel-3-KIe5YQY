@@ -863,6 +863,8 @@
         });
     });
     
+    console.log($('.ng-scope'));
+    
     var rootScope = angular.element($('.ng-scope')).injector().get('$rootScope');
     
     var signData = function(origData, apiKey, apiSecret) {
