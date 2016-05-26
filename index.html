@@ -667,7 +667,7 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="nightTimeDataJson" id="nightTimeData"></json-formatter>
+                <json-formatter open="0" json="$root.nightTimeDataJson" id="nightTimeData"></json-formatter>
          </div>
      </div>
      
@@ -846,7 +846,6 @@
     </script>
    
     <script>
-    
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
       apiSecret = apiSecret || MP.api.apiSecret;
@@ -1348,7 +1347,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            $rootScope.nightTimeDataJson = chart_data;
+            angular.injector().$rootScope.nightTimeDataJson = chart_data;
           })
         });
         // End Night time escalations
@@ -1420,13 +1419,13 @@
     </script>
     
     <script>
-      var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
+        var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
 
-      app.controller('MainCtrl', function ($scope, $http, JSONFormatterConfig) {
-          $scope.hoverPreviewEnabled = true;
-          $scope.hoverPreviewArrayCount = 10;
-          $scope.hoverPreviewFieldCount = 10;
-      });
-  </script>
+        app.controller('MainCtrl', function ($scope, $http, JSONFormatterConfig) {
+            $scope.hoverPreviewEnabled = true;
+            $scope.hoverPreviewArrayCount = 10;
+            $scope.hoverPreviewFieldCount = 10;
+        });
+    </script>
   </body>
 </html>
