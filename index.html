@@ -690,11 +690,11 @@
         }
 
         function allignTimestamp(timestamp) {
-          if (params.period == 'day') {
+          if (params.unit == 'day') {
             return allignTimestampToDay(timestamp);
-          } else if (params.period == 'week') {
+          } else if (params.unit == 'week') {
             return allignTimestampToWeek(timestamp);
-          } else if (params.period == 'month') {
+          } else if (params.unit == 'month') {
             return allignTimestampToMonth(timestamp);
           } else {
             return new Date();
