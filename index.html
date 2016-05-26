@@ -667,7 +667,7 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="" id="nightTimeData"></json-formatter>
+                <json-formatter open="0" json="nightTimeDataJson" id="nightTimeData"></json-formatter>
          </div>
      </div>
      
@@ -1348,7 +1348,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            $('#nightTimeData').attr('json', JSON.stringify(chart_data))
+            $rootScope.nightTimeDataJson = chart_data;
           })
         });
         // End Night time escalations
@@ -1423,19 +1423,9 @@
       var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
 
       app.controller('MainCtrl', function ($scope, $http, JSONFormatterConfig) {
-          $scope.hoverPreviewEnabled = JSONFormatterConfig.hoverPreviewEnabled;
-          $scope.hoverPreviewArrayCount = JSONFormatterConfig.hoverPreviewArrayCount;
-          $scope.hoverPreviewFieldCount = JSONFormatterConfig.hoverPreviewFieldCount;
-
-          $scope.$watch('hoverPreviewEnabled', function(newValue){
-            JSONFormatterConfig.hoverPreviewEnabled = newValue;
-          });
-          $scope.$watch('hoverPreviewArrayCount', function(newValue){
-            JSONFormatterConfig.hoverPreviewArrayCount = newValue;
-          });
-          $scope.$watch('hoverPreviewFieldCount', function(newValue){
-            JSONFormatterConfig.hoverPreviewFieldCount = newValue;
-          });
+          $scope.hoverPreviewEnabled = true;
+          $scope.hoverPreviewArrayCount = 10;
+          $scope.hoverPreviewFieldCount = 10;
       });
   </script>
   </body>
