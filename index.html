@@ -1314,13 +1314,14 @@
           to_date: endDate.format('YYYY-MM-DD')
         }
         // Night time escalations
-        getWithCredentials('https://mixpanel.com/admin/internal/api/project_credentials', {project_id: 962435}).done(function(creds) {
+        // TODO: 962435 after change to allowed_projects populated
+        getWithCredentials('https://mixpanel.com/admin/internal/api/project_credentials', {project_id: 620033}).done(function(creds) {
           var data = {
             params: JSON.stringify(globalParams),
             script: $.trim($("#nightTimeEscalationsQuery").html()),
           }
-          
-          $.post("https://mixpanel.com/api/2.0/segmentation/sum", signData(data, creds.apiKey, creds.apiSecret)).done(function(results) {
+          //creds.apiKey, creds.apiSecret
+          $.post("https://mixpanel.com/api/2.0/segmentation/sum", signData(data, '26fee357395a38b14e707dda933f88c9', '44505545fb7e67a00df4f120767a68d4')).done(function(results) {
             chart_data = {};
             for (var i in results) {
                 chart_data[results[i].key[0]] = results[i].value;
