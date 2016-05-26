@@ -667,8 +667,7 @@
         
       </div>
           <div class="result">
-                <json-formatter open="1" json="{me: {you: 2}}"></json-formatter>
-                <p>Ololo</p>
+                <json-formatter open="0" json="" id="nightTimeData"></json-formatter>
          </div>
      </div>
      
@@ -1349,6 +1348,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
+            $('nightTimeData').attribute('json', JSON.stringify(chart_data))
           })
         });
         // End Night time escalations
