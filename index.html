@@ -667,7 +667,8 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="$root.nightTimeDataJson" id="nightTimeData"></json-formatter>
+                <json-formatter open="0" json="nightTimeDataJson"></json-formatter>
+                <textarea ng-model="nightTimeData" class="col-xs-6" id="nightTimeData"></textarea>
          </div>
      </div>
      
@@ -855,10 +856,14 @@
         $scope.hoverPreviewEnabled = true;
         $scope.hoverPreviewArrayCount = 10;
         $scope.hoverPreviewFieldCount = 10;
+        $scope.$watch('nightTimeData', function (str){
+            var result = {};
+
+            try {
+                $scope.nightTimeDataJson = JSON.parse(str);
+            } catch (e) {}
+        });
     });
-    
-    
-    
     
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
@@ -1361,9 +1366,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            rootScope.$apply(function () {
-                rootScope.nightTimeEscalationsQuery = { value: 6 };
-            });
+            #('#nightTimeData').text(JSON.stringify(chart_data))
             //angular.injector().$root.nightTimeDataJson = chart_data;
           })
         });
