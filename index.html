@@ -745,7 +745,7 @@
 
         function main() {
           return join(
-            Events({event_selectors: params.event_selectors, from_date: params.from_date, to_date: params.to_date}), People()
+            Events({from_date: params.from_date, to_date: params.to_date, event_selectors: [{event: 'pagerduty.incident.notify'}]}), People()
           )
           .filter(eventsFilter)
           .groupBy(['user.properties.escalation_policy_name', allignEventTime], function(a, b) {return 1;})
