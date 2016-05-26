@@ -1347,7 +1347,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            angular.injector().$rootScope.nightTimeDataJson = chart_data;
+            angular.injector().$root.nightTimeDataJson = chart_data;
           })
         });
         // End Night time escalations
