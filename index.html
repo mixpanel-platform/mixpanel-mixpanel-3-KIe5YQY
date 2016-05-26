@@ -846,6 +846,8 @@
     </script>
    
     <script>
+    var injector = angular.injector(['ng']);
+    var rootScope = injector.get("$rootScope");
     
     var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
 
@@ -855,8 +857,8 @@
         $scope.hoverPreviewFieldCount = 10;
     });
     
-    var injector = angular.injector();
-    var rootScope = injector.get("$rootScope");
+    
+    
     
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
