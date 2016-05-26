@@ -5,10 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js"></script>
-   
+       
     <style type="text/css">
       * {
         color: #737c93;
@@ -396,17 +393,9 @@
       .nav:after {
         clear: both;
       }
-      
-    /*!
-     * jsonformatter
-     * 
-     * Version: 0.4.1 - 2015-11-10T20:59:15.275Z
-     * License: MIT
-     */.json-formatter-dark.json-formatter-row,.json-formatter-row{font-family:monospace}.json-formatter-dark.json-formatter-row .toggler.open:after,.json-formatter-row .toggler.open:after{transform:rotate(90deg)}.json-formatter-row,.json-formatter-row a,.json-formatter-row a:hover{color:#000;text-decoration:none}.json-formatter-row .json-formatter-row{margin-left:1em}.json-formatter-row .children.empty{opacity:.5;margin-left:1em}.json-formatter-row .children.empty.object:after{content:"No properties"}.json-formatter-row .children.empty.array:after{content:"[]"}.json-formatter-row .string{color:green;white-space:pre;word-wrap:break-word}.json-formatter-row .number{color:#00f}.json-formatter-row .boolean{color:red}.json-formatter-row .null{color:#855a00}.json-formatter-row .undefined{color:#ca0b69}.json-formatter-row .function{color:#ff20ed}.json-formatter-row .date{background-color:rgba(0,0,0,.05)}.json-formatter-row .url{text-decoration:underline;color:#00f;cursor:pointer}.json-formatter-row .bracket{color:#00f}.json-formatter-row .key{color:#00008b;cursor:pointer}.json-formatter-row .constructor-name{cursor:pointer}.json-formatter-row .toggler{font-size:.8em;line-height:1.2em;vertical-align:middle;opacity:.6;cursor:pointer}.json-formatter-row .toggler:after{display:inline-block;transition:transform .1s ease-in;content:"â–º"}.json-formatter-row>a>.thumbnail-text{opacity:0;transition:opacity .15s ease-in;font-style:italic}.json-formatter-row:hover>a>.thumbnail-text{opacity:.6}.json-formatter-dark.json-formatter-row,.json-formatter-dark.json-formatter-row a,.json-formatter-dark.json-formatter-row a:hover{color:#fff;text-decoration:none}.json-formatter-dark.json-formatter-row .json-formatter-row{margin-left:1em}.json-formatter-dark.json-formatter-row .children.empty{opacity:.5;margin-left:1em}.json-formatter-dark.json-formatter-row .children.empty.object:after{content:"No properties"}.json-formatter-dark.json-formatter-row .children.empty.array:after{content:"[]"}.json-formatter-dark.json-formatter-row .string{color:#31f031;white-space:pre;word-wrap:break-word}.json-formatter-dark.json-formatter-row .number{color:#66c2ff}.json-formatter-dark.json-formatter-row .boolean{color:#ec4242}.json-formatter-dark.json-formatter-row .null{color:#eec97d}.json-formatter-dark.json-formatter-row .undefined{color:#ef8fbe}.json-formatter-dark.json-formatter-row .function{color:#fd48cb}.json-formatter-dark.json-formatter-row .date{background-color:rgba(255,255,255,.05)}.json-formatter-dark.json-formatter-row .url{text-decoration:underline;color:#027bff;cursor:pointer}.json-formatter-dark.json-formatter-row .bracket{color:#9494ff}.json-formatter-dark.json-formatter-row .key{color:#23a0db;cursor:pointer}.json-formatter-dark.json-formatter-row .constructor-name{cursor:pointer}.json-formatter-dark.json-formatter-row .toggler{font-size:.8em;line-height:1.2em;vertical-align:middle;opacity:.6;cursor:pointer}.json-formatter-dark.json-formatter-row .toggler:after{display:inline-block;transition:transform .1s ease-in;content:"â–º"}.json-formatter-dark.json-formatter-row>a>.thumbnail-text{opacity:0;transition:opacity .15s ease-in;font-style:italic}.json-formatter-dark.json-formatter-row:hover>a>.thumbnail-text{opacity:.6}
-      
     </style>
   </head>
-  <body class="mixpanel-platform-body" ng-controller="MainCtrl">
+  <body class="mixpanel-platform-body">
     <div class="top">
       <span>There are currently <span class="active-users-count"></span> users on Mixpanel</span>
       <div class="controls">
@@ -667,8 +656,6 @@
         
       </div>
           <div class="result">
-                <json-formatter open="0" json="$rootScope.nightTimeDataJson"></json-formatter>
-                <!--<textarea ng-model="nightTimeData" class="col-xs-6" id="nightTimeData"></textarea>-->
          </div>
      </div>
      
@@ -846,33 +833,7 @@
       }
     </script>
     <script>
-    /*!
-     * jsonformatter
-     * 
-     * Version: 0.6.0 - 2016-04-29T03:24:40.672Z
-     * License: Apache-2.0
-     */
-        "use strict";angular.module("jsonFormatter",["RecursionHelper"]).provider("JSONFormatterConfig",function(){var n=!1,e=100,t=5;return{get hoverPreviewEnabled(){return n},set hoverPreviewEnabled(e){n=!!e},get hoverPreviewArrayCount(){return e},set hoverPreviewArrayCount(n){e=parseInt(n,10)},get hoverPreviewFieldCount(){return t},set hoverPreviewFieldCount(n){t=parseInt(n,10)},$get:function(){return{hoverPreviewEnabled:n,hoverPreviewArrayCount:e,hoverPreviewFieldCount:t}}}}).directive("jsonFormatter",["RecursionHelper","JSONFormatterConfig",function(n,e){function t(n){return n.replace('"','"')}function r(n){if(void 0===n)return"";if(null===n)return"Object";if("object"==typeof n&&!n.constructor)return"Object";var e=/function (.{1,})\(/,t=e.exec(n.constructor.toString());return t&&t.length>1?t[1]:""}function o(n){return null===n?"null":typeof n}function s(n,e){var r=o(n);return"null"===r||"undefined"===r?r:("string"===r&&(e='"'+t(e)+'"'),"function"===r?n.toString().replace(/[\r\n]/g,"").replace(/\{.*\}/,"")+"{…}":e)}function i(n){var e="";return angular.isObject(n)?(e=r(n),angular.isArray(n)&&(e+="["+n.length+"]")):e=s(n,n),e}function a(n){n.isArray=function(){return angular.isArray(n.json)},n.isObject=function(){return angular.isObject(n.json)},n.getKeys=function(){return n.isObject()?Object.keys(n.json).map(function(n){return""===n?'""':n}):void 0},n.type=o(n.json),n.hasKey="undefined"!=typeof n.key,n.getConstructorName=function(){return r(n.json)},"string"===n.type&&("Invalid Date"!==new Date(n.json).toString()&&(n.isDate=!0),0===n.json.indexOf("http")&&(n.isUrl=!0)),n.isEmptyObject=function(){return n.getKeys()&&!n.getKeys().length&&n.isOpen&&!n.isArray()},n.isOpen=!!n.open,n.toggleOpen=function(){n.isOpen=!n.isOpen},n.childrenOpen=function(){return n.open>1?n.open-1:0},n.openLink=function(e){e&&(window.location.href=n.json)},n.parseValue=function(e){return s(n.json,e)},n.showThumbnail=function(){return!!e.hoverPreviewEnabled&&n.isObject()&&!n.isOpen},n.getThumbnail=function(){if(n.isArray())return n.json.length>e.hoverPreviewArrayCount?"Array["+n.json.length+"]":"["+n.json.map(i).join(", ")+"]";var t=n.getKeys(),r=t.slice(0,e.hoverPreviewFieldCount),o=r.map(function(e){return e+":"+i(n.json[e])}),s=t.length>=5?"…":"";return"{"+o.join(", ")+s+"}"}}return{templateUrl:"json-formatter.html",restrict:"E",replace:!0,scope:{json:"=",key:"=",open:"="},compile:function(e){return n.compile(e,a)}}}]),"object"==typeof module&&(module.exports="jsonFormatter"),angular.module("RecursionHelper",[]).factory("RecursionHelper",["$compile",function(n){return{compile:function(e,t){angular.isFunction(t)&&(t={post:t});var r,o=e.contents().remove();return{pre:t&&t.pre?t.pre:null,post:function(e,s){r||(r=n(o)),r(e,function(n){s.append(n)}),t&&t.post&&t.post.apply(null,arguments)}}}}}]),angular.module("jsonFormatter").run(["$templateCache",function(n){n.put("json-formatter.html",'<div ng-init="isOpen = open && open > 0" class="json-formatter-row"><a ng-click="toggleOpen()"><span class="toggler {{isOpen ? \'open\' : \'\'}}" ng-if="isObject()"></span> <span class="key" ng-if="hasKey"><span class="key-text">{{key}}</span><span class="colon">:</span></span> <span class="value"><span ng-if="isObject()"><span class="constructor-name">{{getConstructorName(json)}}</span> <span ng-if="isArray()"><span class="bracket">[</span><span class="number">{{json.length}}</span><span class="bracket">]</span></span></span> <span ng-if="!isObject()" ng-click="openLink(isUrl)" class="{{type}}" ng-class="{date: isDate, url: isUrl}">{{parseValue(json)}}</span></span> <span ng-if="showThumbnail()" class="thumbnail-text">{{getThumbnail()}}</span></a><div class="children" ng-if="getKeys().length && isOpen"><json-formatter ng-repeat="key in getKeys() track by $index" json="json[key]" key="key" open="childrenOpen()"></json-formatter></div><div class="children empty object" ng-if="isEmptyObject()"></div><div class="children empty array" ng-if="getKeys() && !getKeys().length && isOpen && isArray()"></div></div>')}]);
-    </script>
-    <script>
-    
-    var app = angular.module('MPTopLine', ['ngSanitize', 'jsonFormatter']);
-
-    app.controller('MainCtrl', function ($scope, $http, JSONFormatterConfig) {
-        $scope.hoverPreviewEnabled = true;
-        $scope.hoverPreviewArrayCount = 10;
-        $scope.hoverPreviewFieldCount = 10;
-        $scope.$watch('nightTimeData', function (str){
-            var result = {};
-
-            try {
-                $scope.nightTimeDataJson = JSON.parse(str);
-            } catch (e) {}
-        });
-    });
         
-    var $rootScope = angular.injector(['ng', 'MPTopLine']).get('$rootScope');
-    
     var signData = function(origData, apiKey, apiSecret) {
       apiKey = apiKey || MP.api.apiKey;
       apiSecret = apiSecret || MP.api.apiSecret;
@@ -1374,13 +1335,7 @@
                 chart_data[results[i].key[0]] = results[i].value;
             }
             $('.chart.nigh-time-pages .body').MPChart('setData', chart_data);
-            
-            $rootScope.$apply(function () {
-                $rootScope.nightTimeDataJson = {"a": "b"};
-            });
-            
-            console.log($rootScope.nightTimeDataJson);
-            
+                        
             //$('#nightTimeData').text(JSON.stringify(chart_data))
             //angular.injector().$root.nightTimeDataJson = chart_data;
           })
